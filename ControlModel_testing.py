@@ -190,10 +190,10 @@ with open("test_questions", "r", encoding="utf-8") as file:
       output = decode(m.generate(context, max_new_tokens=(len(inputs[0]) + len(inputs[1]) + 3))[0].tolist())
       Z = int(output.split("= ")[1].split("\n")[0])
       if ans == 0:
-          model_score += (ans-Z)**2*100
+          model_score += min(((ans - Z) ** 2 * 100), 50000)
       else:
-          model_score += ((((ans-Z)**2)/(ans**2)) * 100)
+          model_score += min(((((ans - Z) ** 2) / (ans ** 2)) * 100), 50000)
 
-      print(f"model score: {model_score}, ans: {ans}, mod ans: {Z}")
+      print(f"epoch: {i} model score: {model_score}, ans: {ans}, mod ans: {Z}")
 
 
