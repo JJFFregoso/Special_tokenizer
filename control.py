@@ -7,8 +7,8 @@ from datetime import datetime
 with open("random numbers ult.txt", "r", encoding='utf-8') as f:
     text = f.read()
 
-batch_size = 128
-block_size = 256
+batch_size = 32
+block_size = 128
 max_iters = 107501
 eval_interval= 500
 learning_rate = 5e-4
